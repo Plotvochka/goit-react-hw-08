@@ -1,0 +1,11 @@
+.formWrapper {
+  width: 900px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #424842;
+  border-radius: 10px;
+}
