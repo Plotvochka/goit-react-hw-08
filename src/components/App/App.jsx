@@ -6,7 +6,7 @@ import css from "./App.module.css";
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
-import { selectError, selectLoading } from "../../redux/selectors";
+import { selectError, selectLoading } from "../../redux/auth/selectors";
 
 function App() {
   const dispatch = useDispatch();

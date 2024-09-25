@@ -15,7 +15,7 @@ const handleRejected = (state, action) => {
 };
 
 const sliceContacts = createSlice({
-  name: "Contacts",
+  name: "contacts",
   initialState: INITIAL_STATE,
   extraReducers: (builder) => {
     builder
