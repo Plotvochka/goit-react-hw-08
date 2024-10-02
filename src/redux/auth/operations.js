@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-const baseAPI = axios.create({
+export const baseAPI = axios.create({
   baseURL: "https://connections-api.goit.global",
 });
 
@@ -11,7 +11,6 @@ const clearAuthHeader = () => {
   baseAPI.defaults.headers.common.Authorization = "";
 };
 
-// credentials - обʼєкт властивостей, які користувач введе в форму реєстраії
 export const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
