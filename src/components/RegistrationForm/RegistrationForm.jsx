@@ -1,67 +1,66 @@
-import css from "../RegistrationForm/RegistrationForm.module.css";
-
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import { useId } from "react";
-import { Form, Field, Formik } from "formik";
 import { register } from "../../redux/auth/operations";
+import * as Yup from "yup";
+import css from "./RegistrationForm.module.css";
 
-export default function RegistrationForm() {
+export default function RegisterForm() {
+  const FeedbackSchema = Yup.object().shape({
+    name: Yup.string()
+      .required("Name is Required.")
+      .min(1, "Name is Too Short."),
+    email: Yup.string().email().required("Email is Required."),
+    password: Yup.string()
+      .required("Password is Required")
+      .min(8, "Password is too short - should be 8 chars minimum.")
+      .matches(/(?=.*[0-9])/, "Password must contain a number."),
+  });
+
   const dispatch = useDispatch();
-  const labelID = useId();
-  const handleSubmitForm = (values, actions) => {
-    dispatch(
-      register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      })
-    );
+
+  const handleSubmit = (values, actions) => {
+    dispatch(register(values));
     actions.resetForm();
   };
   return (
     <Formik
-      initialValues={{ name: "", email: "", password: "" }}
-      onSubmit={handleSubmitForm}
+      initialValues={{
+        name: "",
+        email: "",
+        password: "",
+      }}
+      onSubmit={handleSubmit}
+      validationSchema={FeedbackSchema}
     >
-      <Form autocomlete="off" className={css.registerForm}>
-        <h1 className={css.titleForm}>Register Form</h1>
-        <div className={css.group}>
-          <Field
-            className={css.fieldForm}
-            type="text"
+      <Form className={css.wrapper}>
+        <label className={css.label}>
+          Username
+          <Field type="text" name="name" className={css.input} />
+          <ErrorMessage
             name="name"
-            id={`${labelID}-name`}
-            placeholder=" "
+            component="span"
+            className={css.errorName}
           />
-          <label htmlFor={`${labelID}-name`} className={css.labelForm}>
-            User Name
-          </label>
-        </div>
-        <div className={css.group}>
-          <Field
-            className={css.fieldForm}
-            type="email"
+        </label>
+        <label className={css.label}>
+          Email
+          <Field type="email" name="email" className={css.input} />
+          <ErrorMessage
             name="email"
-            id={`${labelID}-email`}
-            placeholder=" "
+            component="span"
+            className={css.errorEmail}
           />
-          <label htmlFor={`${labelID}-email`} className={css.labelForm}>
-            Email
-          </label>
-        </div>
-        <div className={css.group}>
-          <Field
-            className={css.fieldForm}
-            type="password"
+        </label>
+        <label className={css.label}>
+          Password
+          <Field type="password" name="password" className={css.input} />
+          <ErrorMessage
             name="password"
-            id={`${labelID}-password`}
-            placeholder=" "
+            component="span"
+            className={css.errorPswrd}
           />
-          <label htmlFor={`${labelID}-password`} className={css.labelForm}>
-            Password
-          </label>
-        </div>
-        <button className={css.buttonForm} type="submit">
+        </label>
+        <button type="submit" className={css.btn}>
           Register
         </button>
       </Form>

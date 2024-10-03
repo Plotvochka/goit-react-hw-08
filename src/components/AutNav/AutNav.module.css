@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.nav {
+  text-decoration: none;
+  color: #3d6233;
+}

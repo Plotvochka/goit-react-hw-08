@@ -1,69 +1,52 @@
-.contactForm {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  max-width: 300px;
+  padding: 10px;
   border-radius: 10px;
-  padding: 32px;
-  box-shadow: 0 4px 16 #ccc;
-  width: 300px;
-  font-family: sans-serif;
-  letter-spacing: 1px;
-}
-
-.formTitle {
-  text-align: center;
-  font-weight: normal;
-}
-
-.group {
   position: relative;
-  margin-bottom: 32px;
 }
 
-.formLabel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #fff;
-  transition: 0.3s;
+.wrapperFormName {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.formField {
-  font-family: sans-serif;
-  letter-spacing: 1px;
-  font-size: 16px;
-
-  width: 100%;
-  padding: 0 0 10px 0;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-  background-color: transparent;
-  outline: none;
-  transition: 0.3s;
+.wrapperFormNumber {
+  display: flex;
+  gap: 5px;
+  padding-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.formField:focus {
-  border-bottom: 1px solid #0d222e;
+.input {
+  max-width: 150px;
+  border: 1px solid #ccc;
+  margin-left: 20px;
 }
 
-.formButton {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
+.btn {
+  max-width: 150px;
+  max-height: 30px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #3d6233;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.formButton:focus,
-.formButton:hover {
-  background-color: rgba(28, 71, 28, 0.7);
+  border-color: transparent;
 }
 
-.formField:focus ~ .formLabel,
-.formField:not(:placeholder-shown) ~ .formLabel {
-  top: -18px;
-  font-size: 12px;
-  color: #e0e0e0;
+.errorMessageName {
+  color: red;
+  position: absolute;
+  top: 30px;
+}
+
+.errorMessageNumber {
+  color: red;
+  position: absolute;
+  top: 90px;
 }

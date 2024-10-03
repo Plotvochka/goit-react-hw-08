@@ -1,13 +1,26 @@
-.contact:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.contact span {
-  display: inline-block;
-  padding-right: 10px;
-}
-
-.contact {
+.ul {
+  padding-left: 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.li {
+  list-style: none;
+  border-radius: 10px;
+  width: 350px;
+  height: 70px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  box-sizing: border-box;
+  gap: 5px;
+  padding: 10px;
+}
+
+.errorMessage {
+  color: red;
+  min-height: 20px;
 }
